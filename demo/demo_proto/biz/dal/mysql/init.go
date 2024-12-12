@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/CaspianGao/mygomall/demo/demo_proto/biz/model"
 	"github.com/CaspianGao/mygomall/demo/demo_proto/conf"
 
 	"gorm.io/driver/mysql"
@@ -33,18 +34,6 @@ func Init() {
 	if err != nil {
 		panic(err)
 	}
-
-	type Version struct {
-		Version string
-	}
-
-	var v Version
-
-	err = DB.Raw("select version() as version").Scan(&v).Error
-
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println(v)
+	
+	DB.AutoMigrate(&model.User{})
 }
