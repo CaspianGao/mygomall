@@ -31,9 +31,9 @@ func Init() {
 			SkipDefaultTransaction: true,
 		},
 	)
+	
 	if err != nil {
 		panic(err)
 	}
-	
-	DB.AutoMigrate(&model.User{})
+	DB.AutoMigrate(&model.User{})	// gORM中的自动迁移
 }
